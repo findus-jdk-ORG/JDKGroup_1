@@ -78,7 +78,7 @@ body {
 .logo-text {
     padding-top: 25px;
     padding-bottom: 5px;
-    font-size: 24px;
+    font-size:45px;
     color: whitesmoke;
     transform: translateY(-50px);
     opacity: 0;
@@ -87,7 +87,7 @@ body {
 
 .logo-slogan {
     padding-bottom: 40px;
-    font-size: 14px;
+    font-size: 18px;
     color: whitesmoke;
     max-width: 280px;
     margin: 0 auto;
