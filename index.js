@@ -1,62 +1,130 @@
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('JDK GROUP website loaded successfully!');
-    
-    // Initialize elements
-    const callButton = document.getElementById('callButton');
-    const callPopup = document.getElementById('callPopup');
-    const socialCards = document.querySelectorAll('.social-card');
-    
-    // Call button functionality - toggle popup
-    if (callButton && callPopup) {
-        callButton.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent event bubbling
-            callButton.classList.toggle('active');
-        });
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title><span id="company-name">JDK GROUP</span> - Company Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="config.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <!-- <div class="logo">
+                <img src="logo.jpeg" alt="Company Logo" >
+            </div> -->
+            <h1 class="logo-text" id="company-name-title">JDK GROUP</h1>
+            <p class="logo-slogan" id="company-slogan">Innovating for a better tomorrow</p>
+        </div>
+        
+        <!-- Social Media Section -->
+        <div class="social-section">
+            <!-- Call Button -->
+            <a href="" class="social-card call" id="call-link">
+                <div class="social-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <span class="social-text">Call Us</span>
+            </a>
 
-        // Close popup when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!callButton.contains(e.target) && !callPopup.contains(e.target)) {
-                callButton.classList.remove('active');
-            }
-        });
-    }
+            <!-- WhatsApp -->
+            <a href="" class="social-card whatsapp" target="_blank" id="whatsapp-link">
+                <div class="social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <span class="social-text">WhatsApp</span>
+            </a>
+           
+            <!-- Instagram -->
+            <a href="" class="social-card instagram" target="_blank" id="instagram-link">
+                <div class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <span class="social-text">Instagram</span>
+            </a>
+            
+            <!-- LinkedIn -->
+            <a href="" class="social-card linkedin" target="_blank" id="linkedin-link">
+                <div class="social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </div>
+                <span class="social-text">LinkedIn</span>
+            </a>
+            
+            <!-- Website -->
+            <a href="" class="social-card website" target="_blank" id="website-link">
+                <div class="social-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <span class="social-text">Website</span>
+            </a>
+            
+            <!-- Google Reviews -->
+            <a href="" class="social-card google" target="_blank" id="google-link">
+                <div class="social-icon">
+                    <i class="fab fa-google"></i>
+                </div>
+                <span class="social-text">Review Us</span>
+            </a>
+            
+            <!-- Map -->
+            <a href="" class="social-card map" target="_blank" id="map-link">
+                <div class="social-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <span class="social-text">Location</span>
+            </a>
+            
+            <!-- Email -->
+            <a href="" class="social-card email" id="email-link">
+                <div class="social-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <span class="social-text">Email Us</span>
+            </a>
+        </div>
 
-    // Handle card interactions
-    socialCards.forEach(card => {
-        // Skip the call button for press effects to avoid interference
-        if (!card.classList.contains('call')) {
-            // Add press effect for mouse
-            card.addEventListener('mousedown', function() {
-                this.style.transform = 'translateY(2px) scale(0.98)';
-                this.style.boxShadow = '0 3px 5px rgba(0, 0, 0, 0.2)';
-            });
-            
-            // Add press effect for touch
-            card.addEventListener('touchstart', function(e) {
-                this.style.transform = 'translateY(2px) scale(0.98)';
-                this.style.boxShadow = '0 3px 5px rgba(0, 0, 0, 0.2)';
-            }, { passive: true });
-            
-            // Remove press effect
-            const removeEffects = function() {
-                this.style.transform = '';
-                this.style.boxShadow = '';
-            };
-            
-            card.addEventListener('mouseup', removeEffects);
-            card.addEventListener('touchend', removeEffects, { passive: true });
-            card.addEventListener('mouseleave', removeEffects);
-        }
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <p>Developed by <span class="company-name" id="footer-company-name">JDK GROUP</span></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <!-- In your HTML head section -->
+<script>
+    // Apply configuration when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set company info
+        document.getElementById('company-name-title').textContent = companyConfig.companyName;
+        document.getElementById('company-slogan').textContent = companyConfig.slogan;
+        document.getElementById('footer-company-name').textContent = companyConfig.companyName;
+        document.title = companyConfig.companyName + " - Company Profile";
+        
+        // Set logo
+        const logo = document.querySelector('.logo img');
+        logo.src = companyConfig.logoUrl;
+        logo.alt = companyConfig.companyName + " Logo";
+        
+        // Set contact links
+        document.getElementById('call-link').href = `tel:${companyConfig.contact.phone}`;
+        document.getElementById('email-link').href = `mailto:${companyConfig.contact.email}`;
+        
+        // Set social media links
+        document.getElementById('whatsapp-link').href = companyConfig.socialMedia.whatsapp;
+        document.getElementById('instagram-link').href = companyConfig.socialMedia.instagram;
+        document.getElementById('linkedin-link').href = companyConfig.socialMedia.linkedin;
+        document.getElementById('website-link').href = companyConfig.socialMedia.website;
+        document.getElementById('google-link').href = companyConfig.socialMedia.googleReviews;
+        document.getElementById('map-link').href = companyConfig.socialMedia.map;
     });
-
-    // Logo animation
-    const logo = document.querySelector('.logo');
-    if (logo) {
-        setTimeout(() => {
-            logo.style.transform = 'scale(1.1)';
-            setTimeout(() => {
-                logo.style.transform = '';
-            }, 300);
-        }, 1000);
-    }
-});
+</script>
+</body>
+</html>
