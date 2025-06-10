@@ -1,6 +1,6 @@
 // config.js
 const companyConfig = {
-    companyName: "JDK GROUP",
+    companyName: "JDK GgagROUP",
     slogan: "Innovating for a better tomorrow",
     logoUrl: "logo.jpeg",  // Fixed path to match your HTML
     backgroundImage: "./images/background.png",  // Fixed path to match your CSS
